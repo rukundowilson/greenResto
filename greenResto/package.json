@@ -4,7 +4,7 @@
   "description": "Green Resto - Dessert Cart Application",
   "main": "index.js",
   "scripts": {
-    "build": "tsc && rm -rf public && mkdir -p public && cp -r index.html assets styles images public/ && cp -r dist/* public/",
+    "build": "tsc && rm -rf public && mkdir -p public && bash -lc '\n  cp -r index.html public/ || true\n  [ -d assets ] && cp -r assets public/ || true\n  [ -d styles ] && cp -r styles public/ || true\n  [ -d images ] && cp -r images public/ || true\n  cp -r dist/* public/ || true\n'",
     "dev": "tsc --watch",
     "serve": "npx http-server . -p 8080"
   },
